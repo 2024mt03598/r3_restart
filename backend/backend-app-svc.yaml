@@ -1,0 +1,30 @@
+apiVersion: v1
+
+kind: Service
+
+metadata: 
+
+  name: backend-app-service
+
+spec:
+
+  type: NodePort
+
+  selector: 
+
+    tier: backend
+
+  ports:
+
+    - protocol: TCP
+
+      port: 8888 # service port
+
+      nodePort: 32008 # nodeport - laptop port 
+
+      targetPort: 8000 # pod port
+
+
+# ClusterIP => statis IP within cluster - http://backend-app-service:8888/get_info
+
+# NodePort => static IP to external world - http://localhost:32008/get_info

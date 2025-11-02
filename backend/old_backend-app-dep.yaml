@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+
+  name: backend-app-dep
+
+  labels:
+
+    tier: backend
+
+spec:
+
+  replicas: 3
+
+  selector:
+
+    matchLabels:
+
+      tier: backend
+
+  template:
+
+    metadata:
+
+      labels:
+
+        tier: backend
+
+    spec:
+
+      containers:
+
+      - name: backend-app-container
+
+        image: backend-app-img:v1
+        
+        imagePullSecrets:
+
+            - name: regcred
+        
+        ports:
+
+        - containerPort: 8000
+
+        env:
+
+        # Environment variables from ConfigMap
+
+        - name: APP_TITLE
+
+          valueFrom:
+
+            configMapKeyRef:
+
+              name: backend-app-config
+
+              key: APP_TITLE
+
+        - name: APP_VERSION
+
+          valueFrom:
+
+            configMapKeyRef:
+
+              name: backend-app-config
+
+              key: APP_VERSION
+
+
+        # Environment variable from Secret
+
+        - name: API_KEY
+
+          valueFrom:
+
+            secretKeyRef:
+
+              name: backend-app-secret
+
+              key: API_KEY

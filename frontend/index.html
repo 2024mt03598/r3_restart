@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF=8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+    <title> BITS E2E APP</title>
+
+    </head>
+
+    <body>
+
+        <p > Version : <span id="app_version"></span></p>
+
+        <p > Key :<span id="api_key"></span></p>
+
+        <p > Title :<span id="app_title"></span>    </p>
+
+        <script>
+
+             console.log('hello from  js') ;
+
+    async function getData() {
+
+            // make backend call  --- app_title , app_version , api_key
+
+    const response = await fetch('http://4.213.181.126:32008/get_info');
+
+    const data = await response.json();
+
+    console.log(data);   
+
+            document.getElementById('app_version').innerHTML = data.app_version;
+
+            document.getElementById('api_key').innerHTML = data.api_key;
+
+            document.getElementById('app_title').innerHTML = data.app_title;
+
+
+     }
+
+
+getData();
+
+
+        </script>
+
+
+    </body>
+
+</html>
+

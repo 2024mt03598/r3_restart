@@ -1,0 +1,38 @@
+# metallb-ipaddresspool.yaml
+
+apiVersion: metallb.io/v1beta1
+
+kind: IPAddressPool
+
+metadata:
+
+  name: azure-private-pool
+
+  namespace: metallb-system
+
+spec:
+
+  addresses:
+
+  - 10.0.0.10-10.0.0.20  # <-- Use your reserved private IP range
+
+---
+
+# metallb-l2advertisement.yaml
+
+apiVersion: metallb.io/v1beta1
+
+kind: L2Advertisement
+
+metadata:
+
+  name: default-l2advertisement
+
+  namespace: metallb-system
+
+spec:
+
+  ipAddressPools:
+
+  - azure-private-pool
+

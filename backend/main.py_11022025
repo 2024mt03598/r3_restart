@@ -1,0 +1,42 @@
+from flask import Flask
+
+from flask_cors import CORS, cross_origin
+
+import os
+
+
+app = Flask(__name__)
+
+cors = CORS(app)
+
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+
+@app.get('/get_info')
+
+@cross_origin()
+
+def get_info():
+
+    app_title = os.getenv("APP_TITLE","default: BITS k8s demo app")
+
+    app_version = os.getenv("APP_VERSION","default: 1.0")
+
+    api_key= os.getenv("API_KEY","default: rkjhrfviefve")
+
+
+    return {
+
+        "app_title": app_title,
+
+        "app_version":app_version,
+
+        "api_key":api_key
+
+    }
+
+
+if __name__ == '__main__':
+
+    app.run(host='0.0.0.0', port=8000)
+

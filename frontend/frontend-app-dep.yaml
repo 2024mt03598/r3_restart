@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+
+  name: frontend-app-dep
+
+  labels:
+
+    tier: frontend
+
+spec:
+
+  replicas: 4
+
+  selector:
+
+    matchLabels:
+
+      tier: frontend
+
+  template:
+
+    metadata:
+
+      labels:
+
+        tier: frontend
+
+    spec:
+
+      containers:
+
+      - name: frontend-app-container
+
+        image: docker.io/2024mt03598/frontend-app-img:v2
+
+        ports:
+
+        - containerPort: 80
+
+      imagePullSecrets:
+
+        - name: regcred
