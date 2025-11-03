@@ -73,38 +73,25 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
 
-            agent {
-
-                docker {
-
-                    image 'quay.io/podman/stable:latest'  // Podman container
-
-                    args '-v /var/lib/jenkins:/var/lib/jenkins' // Mount Jenkins workspace
-
-                }
-
-            }
-
             steps {
 
-                withCredentials([file(credentialsId: 'kubeconfig-credentials-id', variable: 'KUBECONFIG')]) {
+                script {
 
-                    sh '''
+                    // Use a Docker container with kubectl installed
 
-                        # Install kubectl inside Podman container if not present
+                    docker.image('bitnami/kubectl:latest').inside('-v /var/lib/jenkins:/var/lib/jenkins') {
 
-                        if ! command -v kubectl >/dev/null 2>&1; then
+                        withCredentials([file(credentialsId: 'kubeconfig-credentials-id', variable: 'KUBECONFIG')]) {
 
-                            curl -LO "https://dl.k8s.io/release/$(curl -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+                            sh '''
 
-                            install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+                                kubectl set image deployment/backend-app-dep backend-app-container=$IMAGE_NAME:$IMAGE_TAG --kubeconfig=$KUBECONFIG
 
-                        fi
+                            '''
 
+                        }
 
-                        kubectl set image deployment/backend-app-dep backend-app-container=$IMAGE_NAME:$IMAGE_TAG --kubeconfig=$KUBECONFIG
-
-                    '''
+                    }
 
                 }
 
