@@ -73,7 +73,7 @@ pipeline {
 
                     echo "Checking if deploy image exists..."
 
-                    podman pull $DEPLOY_IMAGE
+                    podman pull docker.io/2024mt03598/podman-kubectl:latest
 
                 '''
 
@@ -90,15 +90,9 @@ pipeline {
 
                     sh '''
 
-                        podman run --rm \
+                        echo "Running kubectl inside Podman container..."
 
-                            -v /var/lib/jenkins:/var/lib/jenkins \
-
-                            -v $KUBECONFIG:$KUBECONFIG \
-
-                            $DEPLOY_IMAGE \
-
-                            kubectl set image deployment/backend-app-dep backend-app-container=$IMAGE_NAME:$IMAGE_TAG --kubeconfig=$KUBECONFIG
+                        podman run --rm -v /var/lib/jenkins:/var/lib/jenkins -v $KUBECONFIG:$KUBECONFIG docker.io/2024mt03598/podman-kubectl:latest kubectl set image deployment/backend-app-dep backend-app-container=$IMAGE_NAME:$IMAGE_TAG --kubeconfig=$KUBECONFIG                            
 
                     '''
 
@@ -115,13 +109,13 @@ pipeline {
 
         success {
 
-            echo "  Deployment completed successfully!"
+            echo " Deployment completed successfully!"
 
         }
 
         failure {
 
-            echo "  Pipeline failed. Please check the logs."
+            echo " Pipeline failed. Please check the logs."
 
         }
 
