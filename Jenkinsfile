@@ -25,13 +25,13 @@ pipeline {
         }
 
 
-        stage('Build Docker Image') {
+        stage('Build Podman Image') {
 
             steps {
 
                 script {
 
-                    sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+                    sh "podman build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
 
                 }
 
@@ -50,9 +50,9 @@ pipeline {
 
                         sh """
 
-                            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                            echo "$DOCKER_PASS" | podman login -u "$DOCKER_USER" --password-stdin docker.io
 
-                            docker push ${IMAGE_NAME}:${IMAGE_TAG}
+                            podman push ${IMAGE_NAME}:${IMAGE_TAG}
 
                         """
 
