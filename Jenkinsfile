@@ -31,7 +31,15 @@ pipeline {
 
                 script {
 
-                    sh "podman build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+                    // Navigate to backend directory and build using Dockerfile there
+
+                    sh """
+
+                        cd ${WORKSPACE}/backend
+
+                        podman build -t ${IMAGE_NAME}:${IMAGE_TAG} -f Dockerfile .
+
+                    """
 
                 }
 
