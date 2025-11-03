@@ -31,13 +31,13 @@ pipeline {
 
             steps {
 
-                sh """
+                sh '''
 
                     cd ${WORKSPACE}/backend
 
-                    podman build -t ${IMAGE_NAME}:${IMAGE_TAG} -f Dockerfile .
+                    podman build -t $IMAGE_NAME:$IMAGE_TAG -f Dockerfile .
 
-                """
+                '''
 
             }
 
@@ -50,13 +50,13 @@ pipeline {
 
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-creds-id', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
 
-                    sh """
+                    sh '''
 
                         echo "$DOCKER_PASS" | podman login -u "$DOCKER_USER" --password-stdin docker.io
 
-                        podman push ${IMAGE_NAME}:${IMAGE_TAG}
+                        podman push $IMAGE_NAME:$IMAGE_TAG
 
-                    """
+                    '''
 
                 }
 
@@ -71,7 +71,7 @@ pipeline {
 
                 withCredentials([file(credentialsId: 'kubeconfig-credentials-id', variable: 'KUBECONFIG')]) {
 
-                    sh """
+                    sh '''
 
                         podman run --rm \
 
@@ -79,15 +79,49 @@ pipeline {
 
                             -v $KUBECONFIG:$KUBECONFIG \
 
-                            ${DEPLOY_IMAGE} \
+                            $DEPLOY_IMAGE \
 
-                            kubectl set image deployment/backend-app-dep backend-app-container=${IMAGE_NAME}:${IMAGE_TAG} --kubeconfig=$KUBECONFIG
+                            kubectl set image deployment/backend-app-dep backend-app-container=$IMAGE_NAME:$IMAGE_TAG --kubeconfig=$KUBECONFIG
 
-                    """
+                    '''
 
                 }
 
             }
+
+        }
+
+
+        stage('Cleanup') {
+
+            steps {
+
+                sh '''
+
+                    echo "Cleaning up old Podman images..."
+
+                    podman image prune -f
+
+                '''
+
+            }
+
+        }
+
+    }
+
+
+    post {
+
+        failure {
+
+            echo "Pipeline failed. Check logs for details."
+
+        }
+
+        success {
+
+            echo "Pipeline completed successfully!"
 
         }
 
