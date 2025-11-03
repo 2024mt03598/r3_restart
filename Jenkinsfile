@@ -9,7 +9,7 @@ pipeline {
 
         IMAGE_TAG = "${BUILD_NUMBER}"
 
-        DEPLOY_IMAGE = "docker.io/2024mt03598/podman-kubectl:latest" // Custom image with Podman + kubectl
+        DEPLOY_IMAGE = "docker.io/2024mt03598/podman-kubectl:latest"
 
     }
 
@@ -65,6 +65,23 @@ pipeline {
         }
 
 
+        stage('Validate Deploy Image') {
+
+            steps {
+
+                sh '''
+
+                    echo "Checking if deploy image exists..."
+
+                    podman pull $DEPLOY_IMAGE
+
+                '''
+
+            }
+
+        }
+
+
         stage('Deploy to Kubernetes') {
 
             steps {
@@ -98,7 +115,7 @@ pipeline {
 
                 sh '''
 
-                    echo "Cleaning up old Podman images..."
+                    echo "Cleaning up unused Podman images..."
 
                     podman image prune -f
 
@@ -113,15 +130,15 @@ pipeline {
 
     post {
 
-        failure {
+        success {
 
-            echo "Pipeline failed. Check logs for details."
+            echo "Deployment completed successfully!"
 
         }
 
-        success {
+        failure {
 
-            echo "Pipeline completed successfully!"
+            echo "Pipeline failed. Please check the logs."
 
         }
 
