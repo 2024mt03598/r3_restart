@@ -109,26 +109,7 @@ pipeline {
         }
 
 
-        stage('Cleanup') {
-
-            steps {
-
-                sh '''
-
-                    echo "Cleaning up unused Podman images..."
-
-                    podman image prune -f
-
-                '''
-
-            }
-
-        }
-
-    }
-
-
-    post {
+      post {
 
         success {
 
@@ -144,4 +125,3 @@ pipeline {
 
     }
 
-}
