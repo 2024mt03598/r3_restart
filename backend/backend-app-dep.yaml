@@ -12,7 +12,7 @@ metadata:
 
 spec:
 
-  replicas: 2
+  replicas: 3
 
   selector:
 
@@ -34,7 +34,7 @@ spec:
 
       - name: backend-app-container
 
-        image: docker.io/2024mt03598/backend-app-img:v1
+        image: docker.io/2024mt03598/backend-app-img:v3
 
         ports:
 
