@@ -1,0 +1,205 @@
+Started by GitHub push by 2024mt03598
+Lightweight checkout support not available, falling back to full checkout.
+Checking out git https://github.com/2024mt03598/r3_restart.git https://github.com/2024mt03598/r3_restart.git into /var/lib/jenkins/workspace/r3Pipeline@script/8590148cdf7ebe11aa62d1a65899dd129c75e23c7084003b95c65b8c7b1646cb to read Jenkinsfile
+The recommended git tool is: NONE
+using credential 2024mt03598@wilp.bits-pilani.ac.in
+using credential 2024mt03598@wilp.bits-pilani.ac.in
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/r3Pipeline@script/8590148cdf7ebe11aa62d1a65899dd129c75e23c7084003b95c65b8c7b1646cb/.git # timeout=10
+Fetching changes from 2 remote Git repositories
+ > git config remote.origin.url https://github.com/2024mt03598/r3_restart.git # timeout=10
+Fetching upstream changes from https://github.com/2024mt03598/r3_restart.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/2024mt03598/r3_restart.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin1.url https://github.com/2024mt03598/r3_restart.git # timeout=10
+Fetching upstream changes from https://github.com/2024mt03598/r3_restart.git
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/2024mt03598/r3_restart.git +refs/heads/*:refs/remotes/origin1/* # timeout=10
+Seen branch in repository origin/main
+Seen branch in repository origin/master
+Seen branch in repository origin1/main
+Seen branch in repository origin1/master
+Seen 4 remote branches
+ > git show-ref --tags -d # timeout=10
+Checking out Revision d5aa9c2ae29824d7a0ef7c4f3a6efb11554168d9 (origin1/main, origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f d5aa9c2ae29824d7a0ef7c4f3a6efb11554168d9 # timeout=10
+Commit message: "Update Backend deployment"
+ > git rev-list --no-walk cc3fade80f24963f7b4037524dcb1cc4df8cfc44 # timeout=10
+ > git rev-list --no-walk cc3fade80f24963f7b4037524dcb1cc4df8cfc44 # timeout=10
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/r3Pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: NONE
+using credential 2024mt03598@wilp.bits-pilani.ac.in
+using credential 2024mt03598@wilp.bits-pilani.ac.in
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/r3Pipeline/.git # timeout=10
+Fetching changes from 2 remote Git repositories
+ > git config remote.origin.url https://github.com/2024mt03598/r3_restart.git # timeout=10
+Fetching upstream changes from https://github.com/2024mt03598/r3_restart.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/2024mt03598/r3_restart.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin1.url https://github.com/2024mt03598/r3_restart.git # timeout=10
+Fetching upstream changes from https://github.com/2024mt03598/r3_restart.git
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/2024mt03598/r3_restart.git +refs/heads/*:refs/remotes/origin1/* # timeout=10
+Seen branch in repository origin/main
+Seen branch in repository origin/master
+Seen branch in repository origin1/main
+Seen branch in repository origin1/master
+Seen 4 remote branches
+ > git show-ref --tags -d # timeout=10
+Checking out Revision d5aa9c2ae29824d7a0ef7c4f3a6efb11554168d9 (origin1/main, origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f d5aa9c2ae29824d7a0ef7c4f3a6efb11554168d9 # timeout=10
+Commit message: "Update Backend deployment"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+The recommended git tool is: NONE
+using credential 2024mt03598@wilp.bits-pilani.ac.in
+using credential 2024mt03598@wilp.bits-pilani.ac.in
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/r3Pipeline/.git # timeout=10
+Fetching changes from 2 remote Git repositories
+ > git config remote.origin.url https://github.com/2024mt03598/r3_restart.git # timeout=10
+Fetching upstream changes from https://github.com/2024mt03598/r3_restart.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/2024mt03598/r3_restart.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin1.url https://github.com/2024mt03598/r3_restart.git # timeout=10
+Fetching upstream changes from https://github.com/2024mt03598/r3_restart.git
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/2024mt03598/r3_restart.git +refs/heads/*:refs/remotes/origin1/* # timeout=10
+Seen branch in repository origin/main
+Seen branch in repository origin/master
+Seen branch in repository origin1/main
+Seen branch in repository origin1/master
+Seen 4 remote branches
+ > git show-ref --tags -d # timeout=10
+Checking out Revision d5aa9c2ae29824d7a0ef7c4f3a6efb11554168d9 (origin1/main, origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f d5aa9c2ae29824d7a0ef7c4f3a6efb11554168d9 # timeout=10
+Commit message: "Update Backend deployment"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Podman Image)
+[Pipeline] sh
++ cd /var/lib/jenkins/workspace/r3Pipeline/backend
++ podman build -t docker.io/2024mt03598/backend-app-img:11 -f Dockerfile .
+STEP 1/7: FROM python:3.9-slim
+STEP 2/7: WORKDIR /app
+--> Using cache d86ce0081bb3b6b6f985b31681280817f69f1340eddaead25009069e17e70e26
+--> d86ce0081bb3
+STEP 3/7: COPY main.py .
+--> Using cache 52660e39228620e2cf28ff727b7b099d61283877867e946840fd8d2ae36aa9a3
+--> 52660e392286
+STEP 4/7: RUN pip install flask
+--> Using cache fa14821e95cea918da340cce0813c7d6c196e4306cfd05be059695e18b5f45a5
+--> fa14821e95ce
+STEP 5/7: RUN pip install flask_cors
+--> Using cache 11992644a50883c29b251ce14b282537cd1fa8d30a59dd2f4eabdd55039b73dc
+--> 11992644a508
+STEP 6/7: EXPOSE 8000
+--> Using cache 58198e7e30dfb77c03e04bff18bc14c6fb28f46117195c12b8d1a5a5a9c92d1d
+--> 58198e7e30df
+STEP 7/7: CMD ["python", "main.py"]
+--> Using cache 15b0513da95efe186bc94464edb3c24fd9cd33534bae380acede29fff50a8120
+COMMIT docker.io/2024mt03598/backend-app-img:11
+--> 15b0513da95e
+Successfully tagged docker.io/2024mt03598/backend-app-img:11
+Successfully tagged docker.io/2024mt03598/backend-app-img:10
+15b0513da95efe186bc94464edb3c24fd9cd33534bae380acede29fff50a8120
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push to Docker Registry)
+[Pipeline] withCredentials
+Masking supported pattern matches of $DOCKER_USER or $DOCKER_PASS
+[Pipeline] {
+[Pipeline] sh
++ echo ****
++ podman login -u **** --password-stdin docker.io
+Login Succeeded!
++ podman push docker.io/****/backend-app-img:11
+Getting image source signatures
+Copying blob sha256:717eca20d54bbbeda7d215656f990eacdeda814f66cfdb899fd54c2b05d4d561
+Copying blob sha256:d7c97cb6f1fe7cae982649e9f55efe201212e8acaa64bd668c083b204e4efd4c
+Copying blob sha256:4f237755fbae41472cb9e0f874fa97abb8d684f8fdcc6bd485edc8b6267a9c93
+Copying blob sha256:298992e09a0315a8f26375a553f216f5fad3decf392956fd2de5ef7aa1f8dfea
+Copying blob sha256:c8f6b54339a8b44071408bd33dd69a9dc7db2ed9cdbf7c533ba09efecda5f33f
+Copying blob sha256:2ebac0a42615ffa832fe038873071781949218579b3eab4ea266c3a78011bfaf
+Copying blob sha256:f63f5c577898b623887c62bf967a6a324bfd75be82e058b98eaeb370ad3b1e6c
+Copying config sha256:15b0513da95efe186bc94464edb3c24fd9cd33534bae380acede29fff50a8120
+Writing manifest to image destination
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Validate Deploy Image)
+[Pipeline] sh
++ echo Checking if deploy image exists...
+Checking if deploy image exists...
++ podman pull docker.io/2024mt03598/podman-kubectl:latest
+Trying to pull docker.io/2024mt03598/podman-kubectl:latest...
+Pulling image //2024mt03598/podman-kubectl:latest inside systemd: setting pull timeout to 5m0s
+Getting image source signatures
+Copying blob sha256:cf9028ed13c44317222edfdf420b07e4cf23e44329e529390f1bcf5ba19ccec8
+Copying blob sha256:219dc883d9a064934ee61a5449d0dfcea3a20a167fa29a86421dd1e0d47f4a67
+Copying blob sha256:f7df9f17fba76195448723c4ababc06afd1be87cf4fbe8ef4647342d28e6a05b
+Copying blob sha256:5659d3d48b2169ad023de6ea22760f38a4a8bffc6a6bb03249ded3a145e63116
+Copying blob sha256:65c4748d76ca145d91a3daf9224dcf8e995b106acac171bbcd459a3c531b92fd
+Copying blob sha256:0a4070bbedbd8666db767eddb583c4b132333b4ff8364c3c7ec95703853f1daf
+Copying blob sha256:8e59d5ef75cef2a028c778982ce14d1cbdfb678a6d5ca15257631a02b7085aff
+Copying blob sha256:acfd75502153af56f4d5accfe9ead9a5a2671bcc1493005d9f0550851a5ebb85
+Copying blob sha256:406d8bac03c65190eda50b4d55db6a4b9be43063e7126dcdf666acc6983e60ad
+Copying blob sha256:28902b18d83f9ad5f4bf899048f02399e9184336ef1137da09dd140b99aa8e27
+Copying blob sha256:aa4caf1b1c1c3d2b29abbe33f4096bfcae3f9b7fd1ecaad1ee682c9e1e15b883
+Copying config sha256:d262f9e2c35afcf7c7858c02174480dc510fd4c16db35e1418481096870ebd1a
+Writing manifest to image destination
+d262f9e2c35afcf7c7858c02174480dc510fd4c16db35e1418481096870ebd1a
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy to Kubernetes)
+[Pipeline] withCredentials
+Masking supported pattern matches of $KUBECONFIG
+[Pipeline] {
+[Pipeline] sh
++ echo Running kubectl inside Podman container...
+Running kubectl inside Podman container...
++ podman run --rm -v /var/lib/jenkins:/var/lib/jenkins -v ****:**** docker.io/2024mt03598/podman-kubectl:latest kubectl set image deployment/backend-app-dep backend-app-container=docker.io/2024mt03598/backend-app-img:11 --kubeconfig=****
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+ Pipeline failed. Please check the logs.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 137
+Finished: FAILURE
